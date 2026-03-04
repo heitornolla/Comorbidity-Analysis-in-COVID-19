@@ -11,9 +11,7 @@ The objective is to improve predictive performance, model validation rigor, and 
 
 #### A. Optimization of the Feature Space
 
-Unlike the original method, we applied scaling to continuous variables.
-
-This prevents high-magnitude features from dominating the gradients and improves convergence when using activation functions such as Tanh.
+Unlike the original method, we applied scaling to continuous variables. This prevents high-magnitude features from dominating the gradients and improves convergence when using activation functions such as Tanh.
 
 #### B. Increased Rigor in Machine Learning Model Validation
 
@@ -25,6 +23,6 @@ We expanded the comparison beyond Support Vector Machines. We include Random For
 
 ### Results
 
-Of the **Machine Learning** models optimizing for recall, Gradient Boosting performs the best, with 94.91% recall. A close second is Random Forest, with 94.80% and third is kNN, with 93.70%. SVM, Logistic Regression and Naive Bayes perform more poorly, with 90.70%, 90.04% and 88.04%, respectively. However, all models achieve accuracy > 87% and specificity > 84%, which is higher than the best scores presented by the best models in the paper. This shows that the mere pre-processing step which the authors overlooked makes a significant difference in the results.
+Of the **Machine Learning** models optimizing for recall, **Gradient Boosting** performs the best, with **94.91% recall**. A close second is **Random Forest**, with **94.80%** and third is **kNN**, with **93.70%**. SVM, Logistic Regression and Naive Bayes perform more poorly, with 90.70%, 90.04% and 88.04%, respectively. However, **all models achieve accuracy > 87% and specificity > 84%**, which is **higher than the best scores presented by the best models in the paper**. This shows that the mere pre-processing step which the authors overlooked makes a significant difference in the results.
 
-The **MLPs** perform in a much more similar fashion when the data is scaled correctly. Both MLPs early-stop at ~90 epochs with accuracy of 89.21% and recall of 94.78%, a near-2% improvement from the original paper. This is difference is not statistically significant from the Random Forest algorithm, which is significantly more explainable.
+The **MLPs** perform in a **much more similar fashion** when the data is scaled correctly. Both MLPs early-stop at ~90 epochs with **accuracy of 89.21% and recall of 94.78%**, a **near-2% improvement** from the original paper. **This is difference is not statistically significant from the Random Forest algorithm, which is significantly more explainable.**
