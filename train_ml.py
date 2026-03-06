@@ -14,9 +14,14 @@ from sklearn.metrics import roc_auc_score, roc_curve
 
 from utils.eval_utils import evaluate_model
 
+# Change to use each different pipeline
+from utils.prepare_dataframes_deprecated import main as get_data
+#from utils.prepare_dataframes import main as get_data
+
+
 
 def compute_auc(model, X_test, y_test, model_name):
-    os.makedirs("auc_outputs", exist_ok=True)
+    os.makedirs("plots/auc_outputs", exist_ok=True)
 
     if hasattr(model, "predict_proba"):
         y_scores = model.predict_proba(X_test)[:, 1]
@@ -36,7 +41,7 @@ def compute_auc(model, X_test, y_test, model_name):
     plt.title(f"ROC Curve - {model_name}")
     plt.legend()
 
-    path = f"auc_outputs/roc_{model_name}.png"
+    path = f"plots/auc_outputs/roc_{model_name}.png"
 
     plt.savefig(path, dpi=300, bbox_inches="tight")
     plt.close()
@@ -50,7 +55,7 @@ def compute_auc(model, X_test, y_test, model_name):
 def generate_shap_explanation(
     model, X_train: pd.DataFrame, X_test: pd.DataFrame, model_name: str
 ):
-    os.makedirs("shap_outputs", exist_ok=True)
+    os.makedirs("plots/shap_outputs", exist_ok=True)
     try:
         X_test_sample = X_test.sample(min(300, len(X_test)), random_state=42)
 
@@ -75,7 +80,7 @@ def generate_shap_explanation(
             shap_matrix = shap_values
 
         plt.title(f"SHAP Summary - {model_name}")
-        plot_path = f"shap_outputs/shap_summary_{model_name}.png"
+        plot_path = f"plots/shap_outputs/shap_summary_{model_name}.png"
         plt.savefig(plot_path, dpi=300, bbox_inches="tight")
         plt.close()
 
@@ -89,15 +94,13 @@ def generate_shap_explanation(
         importance_df = importance_df.sort_values("mean_abs_shap", ascending=False)
 
         top10 = importance_df.head(10)
-        table_path = f"shap_outputs/shap_importance_{model_name}.csv"
+        table_path = f"plots/shap_outputs/shap_importance_{model_name}.csv"
         top10.to_csv(table_path, index=False)
     except Exception as e:
         print(f"SHAP failed for {model_name}: {e}")
 
 
 def run_ml_pipeline():
-    from utils.prepare_dataframes import main as get_data
-
     train_df, val_df, test_df = get_data()
 
     X_train = train_df.drop("died", axis=1)
