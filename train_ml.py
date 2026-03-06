@@ -15,8 +15,8 @@ from sklearn.metrics import roc_auc_score, roc_curve
 from utils.eval_utils import evaluate_model
 
 # Change to use each different pipeline
-from utils.prepare_dataframes_deprecated import main as get_data
-#from utils.prepare_dataframes import main as get_data
+#from utils.prepare_dataframes_deprecated import main as get_data
+from utils.prepare_dataframes import main as get_data
 
 
 
