@@ -4,7 +4,7 @@ import torch.nn as nn
 
 from torch.utils.data import DataLoader
 from utils.eval_utils import evaluate_model, get_pytorch_preds
-from utils.prepare_dataframes import main as get_dfs
+from utils.prepare_dataframes_deprecated import main as get_dfs
 from utils.get_dataloders import prepare_loaders
 from models.mlp_2layer import TwoLayerMLP
 from models.mlp_1layer import OneLayerMLP
