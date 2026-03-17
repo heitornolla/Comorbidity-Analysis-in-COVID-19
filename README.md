@@ -2,7 +2,7 @@
 
 This repository presents a **re-analysis and reimplementation** of the 2021 study:
 
-> *“Analysis of Pre-existing Conditions in COVID-19 Patients: Application of Neural Networks in Patient Segmentation.” (Análise de pré-condições existentes em pacientes com COVID-19: aplicação de redes neurais na segmentação de pacientes.)
+> “Analysis of Pre-existing Conditions in COVID-19 Patients: Application of Neural Networks in Patient Segmentation.” (Análise de pré-condições existentes em pacientes com COVID-19: aplicação de redes neurais na segmentação de pacientes.)
 
 The goal of this project is to demonstrate how **machine learning design choices can artificially inflate performance metrics** and ultimately **reduce the clinical usefulness of predictive models in healthcare**.
 
