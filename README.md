@@ -8,33 +8,17 @@ The goal of this project is to demonstrate how **machine learning design choices
 
 By reconstructing the original pipeline and correcting its methodological flaws, this repository highlights **common pitfalls in clinical ML research** and proposes a more robust and interpretable modeling approach.
 
----
-
 ## Methodological Issues Identified
 
-The re-analysis of the original study uncovered several flaws that significantly undermine the validity and real-world applicability of the reported results.
+The re-analysis of the original study uncovered flaws that undermine the real-world applicability of the reported results.
 
 ### 1. Improper Dataset Balancing
 
 The dataset was balanced via **undersampling before the train/test split**.
 
-This introduces **statistical leakage**, because the test set no longer reflects the true distribution of the population. As a result, performance metrics become **optimistically biased and clinically misleading**.
+This introduces **statistical leakage**, because the test set no longer reflects the true distribution of the population. As a result, performance metrics become **optimistically biased**.
 
----
-
-### 2. Data Discarding
-
-To force a **1:1 class balance**, approximately **87% of the original data was discarded**.
-
-Consequences include:
-
-- Increased model variance
-- Loss of valuable information
-- Failure to model the **real-world class imbalance typical of clinical datasets**
-
----
-
-### 3. Target Leakage
+### 2. Target Leakage
 
 The original model used variables such as:
 
@@ -46,17 +30,13 @@ to predict **mortality**.
 
 However, these variables describe **late-stage clinical interventions**, meaning the model effectively learns to detect **patients already in critical condition**.
 
----
-
-### 4. Poorly Defined Clinical Objective
+### 3. Poorly Defined Clinical Objective
 
 The model mixes **pre-existing comorbidities** with **current clinical status**.
 
 This makes the model unsuitable for **early risk assessment**, since some predictors only become available **after hospitalization**.
 
----
-
-### 5. Pipeline Fragility
+### 4. Pipeline Fragility
 
 The original pipeline lacked several standard ML practices:
 
@@ -64,8 +44,6 @@ The original pipeline lacked several standard ML practices:
 - No **baseline comparisons**
 - No **systematic hyperparameter tuning**
 - Over-reliance on a single neural network architecture
-
----
 
 ## Reimplementation Approach
 
